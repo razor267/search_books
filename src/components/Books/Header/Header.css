@@ -1,0 +1,11 @@
+.header_wrapper {
+    height: 200px;
+    background-image: url("/public/img/header-background.jpg");
+    background-size: auto auto;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "Arial Black";
+    color: black;
+}
