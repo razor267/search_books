@@ -4,7 +4,7 @@ import getBooks from "../../../api/Api";
 
 const Header = () => {
 
-    getBooks()
+    getBooks('books')
         .then(data => console.log(data));
 
     return (
