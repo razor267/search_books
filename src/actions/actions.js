@@ -12,7 +12,15 @@ const editSearchStr = (str) => {
     };
 };
 
+const editSearchCategory = (category) => {
+    return {
+        type: 'SEARCH_CATEGORY',
+        category
+    }
+}
+
 export {
     addAllBooks,
-    editSearchStr
+    editSearchStr,
+    editSearchCategory
 };

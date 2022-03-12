@@ -1,0 +1,13 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 15% minmax(320px, 1275px) 15%;
+    grid-template-areas: ". h ." ". c .";
+}
+
+.header {
+    grid-area: h;
+}
+
+.content {
+    grid-area: c;
+}
