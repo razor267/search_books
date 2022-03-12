@@ -1,7 +1,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 15% minmax(320px, 1275px) 15%;
-    grid-template-areas: ". h ." ". c .";
+    grid-template-areas: ". h ." ". bc ." ". c .";
 }
 
 .header {
@@ -10,4 +10,10 @@
 
 .content {
     grid-area: c;
+}
+
+.booksCount {
+    grid-area: bc;
+    text-align: center;
+    padding: 10px;
 }

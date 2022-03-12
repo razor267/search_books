@@ -19,8 +19,16 @@ const editSearchCategory = (category) => {
     }
 }
 
+const editBooksCount = (count) => {
+    return {
+        type: 'BOOKS_COUNT',
+        count
+    }
+}
+
 export {
     addAllBooks,
     editSearchStr,
-    editSearchCategory
+    editSearchCategory,
+    editBooksCount
 };

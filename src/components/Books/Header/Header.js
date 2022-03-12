@@ -1,20 +1,9 @@
 import React from 'react';
 import './Header.css';
-import getBooks from "../../../api/Api";
-import {addAllBooks, editSearchCategory, editSearchStr} from "../../../actions/actions";
-import {connect} from "react-redux";
 
 const Header = (props) => {
 
-    const {addAllBooks, books, searchStr, editSearchStr, searchCategory, editSearchCategory} = props;
-
-    console.log(books);
-
-    const searchBooks = (str, category) => {
-        getBooks(str, category)
-            .then(data => addAllBooks(data.items))
-            .finally(() => editSearchStr(""));
-    };
+    const {searchBooks, searchStr, editSearchStr, searchCategory, editSearchCategory} = props;
 
     return (
         <div className="header_wrapper">
@@ -35,6 +24,7 @@ const Header = (props) => {
                 <span className="categoriesSelect">
                     <select name="categories"
                         onChange={(e) => editSearchCategory(e.currentTarget.value)}
+                            value={searchCategory}
                     >
                         <option>all</option>
                         <option>art</option>
@@ -53,24 +43,9 @@ const Header = (props) => {
                     </select>
                 </span>
             </div>
-
         </div>
     )
 
 };
 
-const mapStateToProps = (state) => {
-    return {
-        books: state.books,
-        searchStr: state.searchStr,
-        searchCategory: state.searchCategory
-    }
-};
-
-const mapDispatchToProps = {
-    addAllBooks,
-    editSearchStr,
-    editSearchCategory
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

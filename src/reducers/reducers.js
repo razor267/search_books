@@ -1,7 +1,8 @@
 const initialState = {
     books: [],
     searchStr: "",
-    searchCategory: "all"
+    searchCategory: "all",
+    booksCount: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 searchCategory: action.category
+            }
+        case 'BOOKS_COUNT':
+            return {
+                ...state,
+                booksCount: action.count
             }
         default:
             return state;
