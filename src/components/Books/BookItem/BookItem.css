@@ -1,3 +1,29 @@
 .wrapperBook {
+    display: grid;
+    grid-template-columns: 1fr;
     background: #ececec;
+    padding: 15px;
+}
+
+.bookImg {
+    text-align: center;
+    margin: 10px;
+}
+
+.bookImg img {
+    box-shadow: 10px 5px 5px #bbb9b9;
+}
+
+.bookTitle {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.bookCategory {
+    color: gray;
+    text-decoration: underline;
+}
+
+.bookAuthors {
+    color: gray;
 }

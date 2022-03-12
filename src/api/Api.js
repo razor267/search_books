@@ -5,9 +5,9 @@ const getBooks = async (str, category) => {
     // let url = `${_apiBase}?q=${str}&key=${_apiKey}&maxResults=30`;
     let url = `${_apiBase}?q=${str ? str : ''}`;
 
-        if (category != 'all') {
-            url = `${url}+subject:${category}`
-        }
+    if (category != 'all') {
+        url = `${url}+subject:${category}`
+    }
 
     url = `${url}&key=${_apiKey}&maxResults=30`;
 
