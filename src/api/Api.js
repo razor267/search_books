@@ -1,4 +1,4 @@
-const getBooks = async (str, category) => {
+const getBooks = async (str, category, sort, startIndex) => {
 
     const _apiBase = 'https://www.googleapis.com/books/v1/volumes';
     const _apiKey = 'AIzaSyB3WXX8QQrwnhmssv0UpQgNiCR1WXpDqdo';
@@ -6,10 +6,18 @@ const getBooks = async (str, category) => {
     let url = `${_apiBase}?q=${str ? str : ''}`;
 
     if (category != 'all') {
-        url = `${url}+subject:${category}`
+        url = `${url}+subject:${category}`;
     }
 
-    url = `${url}&key=${_apiKey}&maxResults=30`;
+    url = `${url}&orderBy=${sort}`;
+
+    url = `${url}&key=${_apiKey}`;
+
+    if (startIndex) {
+        url = `${url}&startIndex=${startIndex}`;
+    }
+
+    url = `${url}&maxResults=30`;
 
     const res = await fetch(url);
 

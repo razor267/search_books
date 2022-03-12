@@ -2,16 +2,17 @@ const initialState = {
     books: [],
     searchStr: "",
     searchCategory: "all",
-    booksCount: 0
+    booksCount: 0,
+    sort: "relevance"
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_ALL_BOOKS':
-            return {
-                ...state,
-                books: action.books
+            for (let i=0; i<action.books.length; i++) {
+                state.books.push(action.books[i]);
             }
+            return state
         case 'EDIT_SEARCH_STR':
             return {
                 ...state,
@@ -26,6 +27,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 booksCount: action.count
+            }
+        case 'EDIT_SORT':
+            return {
+                ...state,
+                sort: action.sort
+            }
+        case 'CLEAR_BOOKS':
+            return {
+                ...state,
+                books: []
             }
         default:
             return state;

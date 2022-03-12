@@ -1,7 +1,7 @@
 .wrapper {
     display: grid;
     grid-template-columns: 15% minmax(320px, 1275px) 15%;
-    grid-template-areas: ". h ." ". bc ." ". c .";
+    grid-template-areas: ". h ." ". bc ." ". c ." ". p .";
 }
 
 .header {
@@ -16,4 +16,13 @@
     grid-area: bc;
     text-align: center;
     padding: 10px;
+}
+
+.paginator {
+    grid-area: p;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 11%;
+    margin: auto;
 }

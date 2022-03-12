@@ -26,9 +26,24 @@ const editBooksCount = (count) => {
     }
 }
 
+const editSort = (sort) => {
+    return {
+        type: 'EDIT_SORT',
+        sort
+    }
+}
+
+const clearBooks = () => {
+    return {
+        type: 'CLEAR_BOOKS'
+    }
+}
+
 export {
     addAllBooks,
     editSearchStr,
     editSearchCategory,
-    editBooksCount
+    editBooksCount,
+    editSort,
+    clearBooks
 };

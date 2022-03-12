@@ -11,7 +11,7 @@ const Content = (props) => {
             {books && books.map(b => {
                 return (
                     <BookItem
-                        key={b.id}
+                        key={b.etag}
                         img={b.volumeInfo.imageLinks ? b.volumeInfo.imageLinks.smallThumbnail : ''}
                         title={b.volumeInfo.title}
                         categories={b.volumeInfo.categories}
