@@ -7,7 +7,7 @@
 .bookImg {
     grid-area: img;
     text-align: center;
-    padding: 40px;
+    padding: 10%;
     background: #ececec;
 }
 
@@ -42,4 +42,11 @@
 
 .bookCategory {
     color: gray;
+}
+
+@media (max-width: 600px) {
+    .wrapperBook {
+        grid-template-columns: 1fr;
+        grid-template-areas: "img" "c";
+    }
 }

@@ -2,23 +2,24 @@
     display: grid;
     grid-template-columns: 1fr;
     background: #ececec;
-    padding: 15px;
+    padding: 5%;
     text-decoration: none;
     color: black;
 }
 
 .bookItemImg {
     text-align: center;
-    margin: 10px;
+    margin: 5%;
 }
 
 .bookItemImg img {
     box-shadow: 10px 5px 5px #bbb9b9;
+    width: 75%;
 }
 
 .bookItemTitle {
     font-weight: bold;
-    padding: 5px 5px 5px 0px;
+    padding: 5% 5% 5% 0;
 }
 
 .bookItemCategory {

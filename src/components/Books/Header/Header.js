@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const Header = (props) => {
 
-    const {searchBooks, searchStr, editSearchStr, searchCategory, editSearchCategory, sort , editSort} = props;
+    const {searchBooks, searchStr, editSearchStr, searchCategory, editSearchCategory, sort, editSort} = props;
 
     return (
         <div className="header_wrapper">
@@ -18,9 +18,11 @@ const Header = (props) => {
                         onKeyDown={(e) => e.keyCode == 13 ? searchBooks(searchStr, searchCategory, sort) : null}
                     />
                 </span>
-                <Link to='/'><button onClick={() => searchBooks(searchStr, searchCategory, sort)}>Поиск</button></Link>
+                <Link to='/'>
+                    <button onClick={() => searchBooks(searchStr, searchCategory, sort)}>Поиск</button>
+                </Link>
             </div>
-            <div className="filters">
+            <div className="category">
                 <span className="categories">Categories</span>
                 <span className="categoriesSelect">
                     <select
@@ -36,18 +38,18 @@ const Header = (props) => {
                         <option>medical</option>
                         <option>poetry</option>
                     </select>
-                </span>
+                    </span>
+            </div>
+            <div className="sorting">
                 <span className="sort">Sorting by</span>
-                <span>
-                    <select
-                        name="sort"
-                        onChange={(e)=>editSort(e.currentTarget.value)}
-                        value={sort}
-                    >
-                        <option>relevance</option>
-                        <option>newest</option>
-                    </select>
-                </span>
+                <select
+                    name="sort"
+                    onChange={(e) => editSort(e.currentTarget.value)}
+                    value={sort}
+                >
+                    <option>relevance</option>
+                    <option>newest</option>
+                </select>
             </div>
         </div>
     )

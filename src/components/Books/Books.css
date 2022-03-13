@@ -5,6 +5,7 @@
 }
 
 .header {
+    width: 100%;
     grid-area: h;
 }
 
@@ -23,6 +24,23 @@
     padding: 15px;
     font-size: 20px;
     cursor: pointer;
-    width: 11%;
     margin: auto;
+}
+
+@media (max-width: 1000px) {
+    .wrapper {
+        grid-template-columns: 10% minmax(320px, 1275px) 10%;
+    }
+    .paginator {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapper {
+        grid-template-columns: 5% minmax(320px, 1275px) 5%;
+    }
+    .paginator {
+        font-size: 16px;
+    }
 }

@@ -1,6 +1,19 @@
 .wrapperContent {
     margin: 0 10px 10px 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 23% 23% 23% 23%;
     gap: 20px;
+}
+
+@media (max-width: 1000px) {
+    .wrapperContent {
+        grid-template-columns: 32% 32% 32%;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapperContent {
+        grid-template-columns: 48% 48%;
+    }
 }
