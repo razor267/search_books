@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import './Book.css';
 import {getBook} from "../../../api/Api";
+import {Spinner} from "../../Spinner/Spinner";
 
 const Book = (props) => {
 
@@ -27,6 +28,10 @@ const Book = (props) => {
             }
         }
         return itemList;
+    }
+
+    if(!book) {
+        return <Spinner/>
     }
 
     return (

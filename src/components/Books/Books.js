@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "./Header/Header";
 import Content from "./Content/Content";
 import './Books.css';
@@ -14,14 +14,20 @@ import {
 import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
 import Book from "./Book/Book";
+import {Spinner} from "../Spinner/Spinner";
 
 const Books = (props) => {
 
+    const {addAllBooks, searchStr, searchCategory, books, editSearchStr, editSearchCategory, booksCount, editBooksCount, sort, editSort, clearBooks} = props;
+    const [load, setLoad] = useState(false);
     const {bookId} = useParams();
 
-    const {addAllBooks, searchStr, searchCategory, books, editSearchStr, editSearchCategory, booksCount, editBooksCount, sort, editSort, clearBooks} = props;
+    useEffect(()=> {
+        return () => setLoad(true);
+    },[])
 
     const searchBooks = (str, category, sort, startIndex) => {
+        setLoad(true);
         if (!startIndex) {
             clearBooks();
         }
@@ -29,6 +35,7 @@ const Books = (props) => {
             .then(data => {
                 addAllBooks(data.items);
                 editBooksCount(data.totalItems);
+                setLoad(false);
             })
             .finally(() => {
                 // editSearchStr("");
@@ -51,8 +58,8 @@ const Books = (props) => {
             </div>
             {!bookId && <div className="booksCount">Found {booksCount} results</div>}
             <div className="content">
+                {load && <Spinner/>}
                 {bookId ? <Book id={bookId}/> : <Content books={books}/>}
-
             </div>
             {booksCount > books.length && !bookId ?
                 <div className="paginator" onClick={() => searchBooks(searchStr, searchCategory, sort, books.length)}>
