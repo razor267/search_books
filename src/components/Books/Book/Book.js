@@ -15,6 +15,9 @@ const Book = (props) => {
     }, [props]);
 
     const returnItemList = (items) => {
+        if(!items) {
+            return "";
+        }
         let itemList = "";
         for (let i = 0; i < items.length; i++) {
             if (i == 0) {
