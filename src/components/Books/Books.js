@@ -21,8 +21,6 @@ const Books = (props) => {
 
     const {addAllBooks, searchStr, searchCategory, books, editSearchStr, editSearchCategory, booksCount, editBooksCount, sort, editSort, clearBooks} = props;
 
-    console.log(books);
-
     const searchBooks = (str, category, sort, startIndex) => {
         if (!startIndex) {
             clearBooks();

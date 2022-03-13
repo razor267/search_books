@@ -1,14 +1,45 @@
 .wrapperBook {
     display: grid;
     grid-template-columns: 2fr 3fr;
+    grid-template-areas: "img c";
 }
 
 .bookImg {
+    grid-area: img;
     text-align: center;
     padding: 40px;
+    background: #ececec;
 }
 
 .bookImg img {
     box-shadow: 10px 5px 5px #bbb9b9;
     width: 80%;
+}
+
+.bookContent {
+    grid-area: c;
+    margin: 40px;
+}
+
+.bookTitle {
+    margin: 20px 0px 10px 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bookDescription {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #c6c6c6;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.bookAuthors {
+    color: gray;
+    text-decoration: underline;
+}
+
+.bookCategory {
+    color: gray;
 }
