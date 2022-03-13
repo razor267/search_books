@@ -38,7 +38,7 @@ const Book = (props) => {
                 <div className="bookCategory">{book && returnItemList(book.volumeInfo.categories)}</div>
                 <div className="bookTitle">{book && book.volumeInfo.title}</div>
                 <div className="bookAuthors">{book && returnItemList(book.volumeInfo.authors)}</div>
-                <div className="bookDescription">{book && book.volumeInfo.description}</div>
+                <div className="bookDescription" dangerouslySetInnerHTML={book && {__html: book.volumeInfo.description}}></div>
             </div>
         </div>
     )
