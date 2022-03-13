@@ -12,8 +12,12 @@ import {
     editSort
 } from "../../actions/actions";
 import {connect} from "react-redux";
+import {useParams} from "react-router-dom";
+import Book from "./Book/Book";
 
 const Books = (props) => {
+
+    const {bookId} = useParams();
 
     const {addAllBooks, searchStr, searchCategory, books, editSearchStr, editSearchCategory, booksCount, editBooksCount, sort, editSort, clearBooks} = props;
 
@@ -47,11 +51,12 @@ const Books = (props) => {
                     editSort={editSort}
                 />
             </div>
-            <div className="booksCount">Found {booksCount} results</div>
+            {!bookId && <div className="booksCount">Found {booksCount} results</div>}
             <div className="content">
-                <Content books={books}/>
+                {bookId ? <Book id={bookId}/> : <Content books={books}/>}
+
             </div>
-            {booksCount > books.length ?
+            {booksCount > books.length && !bookId ?
                 <div className="paginator" onClick={() => searchBooks(searchStr, searchCategory, sort, books.length)}>
                     More items
                 </div> : null}

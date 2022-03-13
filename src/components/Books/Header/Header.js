@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import {Link} from "react-router-dom";
 
 const Header = (props) => {
 
@@ -17,7 +18,7 @@ const Header = (props) => {
                         onKeyDown={(e) => e.keyCode == 13 ? searchBooks(searchStr, searchCategory, sort) : null}
                     />
                 </span>
-                <span><button onClick={() => searchBooks(searchStr, searchCategory, sort)}>Поиск</button></span>
+                <Link to='/'><button onClick={() => searchBooks(searchStr, searchCategory, sort)}>Поиск</button></Link>
             </div>
             <div className="filters">
                 <span className="categories">Categories</span>

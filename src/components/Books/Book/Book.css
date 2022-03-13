@@ -1,0 +1,14 @@
+.wrapperBook {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.bookImg {
+    text-align: center;
+    padding: 40px;
+}
+
+.bookImg img {
+    box-shadow: 10px 5px 5px #bbb9b9;
+    width: 80%;
+}

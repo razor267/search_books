@@ -12,6 +12,7 @@ const Content = (props) => {
                 return (
                     <BookItem
                         key={b.etag}
+                        id={b.id}
                         img={b.volumeInfo.imageLinks ? b.volumeInfo.imageLinks.smallThumbnail : ''}
                         title={b.volumeInfo.title}
                         categories={b.volumeInfo.categories}

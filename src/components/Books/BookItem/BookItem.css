@@ -1,29 +1,31 @@
-.wrapperBook {
+.wrapperBookItem {
     display: grid;
     grid-template-columns: 1fr;
     background: #ececec;
     padding: 15px;
+    text-decoration: none;
+    color: black;
 }
 
-.bookImg {
+.bookItemImg {
     text-align: center;
     margin: 10px;
 }
 
-.bookImg img {
+.bookItemImg img {
     box-shadow: 10px 5px 5px #bbb9b9;
 }
 
-.bookTitle {
+.bookItemTitle {
     font-weight: bold;
     padding: 5px 5px 5px 0px;
 }
 
-.bookCategory {
+.bookItemCategory {
     color: gray;
     text-decoration: underline;
 }
 
-.bookAuthors {
+.bookItemAuthors {
     color: gray;
 }

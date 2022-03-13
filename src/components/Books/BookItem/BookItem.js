@@ -1,9 +1,10 @@
 import React from "react";
 import './BookItem.css';
+import {Link} from "react-router-dom";
 
 const BookItem = (props) => {
 
-    const {authors, img, title, categories} = props;
+    const {authors, img, title, categories, id} = props;
 
     const returnAuthors = (authors) => {
         let authorsList = "";
@@ -18,12 +19,12 @@ const BookItem = (props) => {
     }
 
     return (
-        <div className="wrapperBook">
-            {img ? <div className="bookImg"><img src={img} alt={title}/></div> : ""}
-            {categories ? <div className="bookCategory">{categories[0]}</div> : ""}
-            {title ? <div className="bookTitle">{title}</div> : ""}
-            {authors ? <div className="bookAuthors">{returnAuthors(authors)}</div> : ""}
-        </div>
+        <Link to={`book/${id}`} className="wrapperBookItem">
+            {img ? <div className="bookItemImg"><img src={img} alt={title}/></div> : ""}
+            {categories ? <div className="bookItemCategory">{categories[0]}</div> : ""}
+            {title ? <div className="bookItemTitle">{title}</div> : ""}
+            {authors ? <div className="bookItemAuthors">{returnAuthors(authors)}</div> : ""}
+        </Link>
     )
 }
 
