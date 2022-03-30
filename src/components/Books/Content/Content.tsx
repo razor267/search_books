@@ -1,9 +1,10 @@
 import React from 'react'
 import BookItem from '../BookItem/BookItem'
 import './Content.css'
+import {BookType} from '../../../api/Api'
 
 type PropsType = {
-    books: any
+    books: BookType[]
 }
 const Content: React.FC<PropsType> = (props) => {
 
@@ -11,7 +12,7 @@ const Content: React.FC<PropsType> = (props) => {
 
     return (
         <div className="wrapperContent">
-            {books?.map((b: any) => {
+            {books?.map((b: BookType) => {
                 return (
                     <BookItem
                         key={b.etag}

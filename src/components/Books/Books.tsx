@@ -65,7 +65,6 @@ const Books: React.FC = () => {
                 </div> : null}
         </div>
     )
-
 }
 
 export default Books

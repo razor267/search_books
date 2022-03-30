@@ -1,8 +1,9 @@
 import {ActionsTypes} from '../actions/actions'
+import {BookType} from '../api/Api'
 
 export type StateType = typeof initialState
 const initialState = {
-    books: [] as any,
+    books: [] as BookType[],
     searchStr: '',
     searchCategory: 'all',
     booksCount: 0,

@@ -1,8 +1,9 @@
 import {InferActionsTypes} from '../store'
+import {BookType} from '../api/Api'
 
 export type ActionsTypes = InferActionsTypes<typeof actions>
 export const actions = {
-    addAllBooks: (books: any) => ({
+    addAllBooks: (books: BookType[]) => ({
         type: 'ADD_ALL_BOOKS',
         books
     } as const),

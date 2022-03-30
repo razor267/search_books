@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import './Book.css'
-import {getBook} from '../../../api/Api'
+import {BookType, getBook} from '../../../api/Api'
 import {Spinner} from '../../Spinner/Spinner'
+import {ItemList} from '../../../helpers/helpers'
 
 type PropsType = {
     id: string
@@ -9,7 +10,7 @@ type PropsType = {
 const Book: React.FC<PropsType> = (props) => {
 
     const {id} = props
-    const [book, setBook]: any = useState()
+    const [book, setBook] = useState<BookType>()
 
     useEffect(() => {
         getBook(id)
@@ -17,21 +18,6 @@ const Book: React.FC<PropsType> = (props) => {
                 setBook(data)
             })
     }, [props])
-
-    const returnItemList = (items: any) => {
-        if (!items) {
-            return ''
-        }
-        let itemList = ''
-        for (let i = 0; i < items.length; i++) {
-            if (i === 0) {
-                itemList = items[i]
-            } else {
-                itemList = `${itemList}, ${items[i]}`
-            }
-        }
-        return itemList
-    }
 
     if (!book) {
         return <Spinner/>
@@ -43,9 +29,9 @@ const Book: React.FC<PropsType> = (props) => {
                 <img src={book && book.volumeInfo.imageLinks.thumbnail} alt={book && book.volumeInfo.title}/>
             </div>
             <div className="bookContent">
-                <div className="bookCategory">{book && returnItemList(book.volumeInfo.categories)}</div>
+                <div className="bookCategory">{book && ItemList(book.volumeInfo.categories)}</div>
                 <div className="bookTitle">{book && book.volumeInfo.title}</div>
-                <div className="bookAuthors">{book && returnItemList(book.volumeInfo.authors)}</div>
+                <div className="bookAuthors">{book && ItemList(book.volumeInfo.authors)}</div>
                 <div className="bookDescription"
                      dangerouslySetInnerHTML={book && {__html: book.volumeInfo.description}}></div>
             </div>

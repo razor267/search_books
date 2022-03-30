@@ -63,7 +63,6 @@ const Header: React.FC<PropsType> = (props) => {
             </div>
         </div>
     )
-
 }
 
 export default Header
