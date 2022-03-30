@@ -3,38 +3,38 @@ import Header from "./Header/Header";
 import Content from "./Content/Content";
 import './Books.css';
 import getBooks from "../../api/Api";
-import {
-    addAllBooks,
-    clearBooks,
-    editBooksCount,
-    editSearchCategory,
-    editSearchStr,
-    editSort
-} from "../../actions/actions";
-import {connect} from "react-redux";
+import {actions} from "../../actions/actions";
+import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import Book from "./Book/Book";
 import {Spinner} from "../Spinner/Spinner";
 
-const Books = (props) => {
+const Books = () => {
 
-    const {addAllBooks, searchStr, searchCategory, books, editSearchStr, editSearchCategory, booksCount, editBooksCount, sort, editSort, clearBooks} = props;
     const [load, setLoad] = useState(false);
     const {bookId} = useParams();
 
-    useEffect(()=> {
+    useEffect(() => {
         return () => setLoad(true);
-    },[])
+    }, [])
+
+    const books = useSelector((state) => state.books)
+    const searchStr = useSelector((state) => state.searchStr)
+    const searchCategory = useSelector((state) => state.searchCategory)
+    const booksCount = useSelector((state) => state.booksCount)
+    const sort = useSelector((state) => state.sort)
+
+    const dispatch = useDispatch()
 
     const searchBooks = (str, category, sort, startIndex) => {
         setLoad(true);
         if (!startIndex) {
-            clearBooks();
+            dispatch(actions.clearBooks());
         }
         getBooks(str, category, sort, startIndex)
             .then(data => {
-                addAllBooks(data.items);
-                editBooksCount(data.totalItems);
+                dispatch(actions.addAllBooks(data.items));
+                dispatch(actions.editBooksCount(data.totalItems));
                 setLoad(false);
             })
             .finally(() => {
@@ -49,11 +49,8 @@ const Books = (props) => {
                 <Header
                     searchBooks={searchBooks}
                     searchStr={searchStr}
-                    editSearchStr={editSearchStr}
                     searchCategory={searchCategory}
-                    editSearchCategory={editSearchCategory}
                     sort={sort}
-                    editSort={editSort}
                 />
             </div>
             {!bookId && <div className="booksCount">Found {booksCount} results</div>}
@@ -70,23 +67,4 @@ const Books = (props) => {
 
 };
 
-const mapStateToProps = (state) => {
-    return {
-        books: state.books,
-        searchStr: state.searchStr,
-        searchCategory: state.searchCategory,
-        booksCount: state.booksCount,
-        sort: state.sort
-    }
-};
-
-const mapDispatchToProps = {
-    addAllBooks,
-    editSearchStr,
-    editSearchCategory,
-    editBooksCount,
-    editSort,
-    clearBooks
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Books);
+export default Books;

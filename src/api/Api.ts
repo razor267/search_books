@@ -1,7 +1,7 @@
 const _apiBase = 'https://www.googleapis.com/books/v1/volumes';
 const _apiKey = 'AIzaSyB3WXX8QQrwnhmssv0UpQgNiCR1WXpDqdo';
 
-const getBooks = async (str, category, sort, startIndex) => {
+const getBooks = async (str: string, category:string, sort:string, startIndex:number) => {
 
     // let url = `${_apiBase}?q=${str}&key=${_apiKey}&maxResults=30`;
     let url = `${_apiBase}?q=${str ? str : ''}`;
@@ -28,7 +28,7 @@ const getBooks = async (str, category, sort, startIndex) => {
     return await res.json();
 };
 
-export const getBook = async (id) => {
+export const getBook = async (id:number) => {
     const url = `${_apiBase}/${id}?key=${_apiKey}`;
 
     const res = await fetch(url);

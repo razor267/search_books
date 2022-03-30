@@ -1,10 +1,14 @@
 import React from 'react';
 import './Header.css';
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {actions} from "../../../actions/actions";
 
 const Header = (props) => {
 
-    const {searchBooks, searchStr, editSearchStr, searchCategory, editSearchCategory, sort, editSort} = props;
+    const {searchBooks, searchStr, searchCategory, sort} = props;
+
+    const dispatch = useDispatch()
 
     return (
         <div className="header_wrapper">
@@ -12,7 +16,7 @@ const Header = (props) => {
             <div className="search">
                 <span>
                     <input
-                        onChange={(e) => editSearchStr(e.currentTarget.value)}
+                        onChange={(e) => dispatch(actions.editSearchStr(e.currentTarget.value))}
                         type="text"
                         value={searchStr}
                         onKeyDown={(e) => e.keyCode === 13 ? searchBooks(searchStr, searchCategory, sort) : null}
@@ -27,7 +31,7 @@ const Header = (props) => {
                 <span className="categoriesSelect">
                     <select
                         name="categories"
-                        onChange={(e) => editSearchCategory(e.currentTarget.value)}
+                        onChange={(e) => dispatch(actions.editSearchCategory(e.currentTarget.value))}
                         value={searchCategory}
                     >
                         <option>all</option>
@@ -44,7 +48,7 @@ const Header = (props) => {
                 <span className="sort">Sorting by</span>
                 <select
                     name="sort"
-                    onChange={(e) => editSort(e.currentTarget.value)}
+                    onChange={(e) => dispatch(actions.editSort(e.currentTarget.value))}
                     value={sort}
                 >
                     <option>relevance</option>

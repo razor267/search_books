@@ -1,16 +1,19 @@
-const initialState = {
-    books: [],
-    searchStr: "",
-    searchCategory: "all",
-    booksCount: 0,
-    sort: "relevance"
-};
+import {ActionsTypes} from '../actions/actions'
 
-const reducer = (state = initialState, action) => {
+export type StateType = typeof initialState
+const initialState = {
+    books: [] as any,
+    searchStr: '',
+    searchCategory: 'all',
+    booksCount: 0,
+    sort: 'relevance'
+}
+
+const reducer = (state = initialState, action: ActionsTypes): StateType => {
     switch (action.type) {
         case 'ADD_ALL_BOOKS':
-            for (let i=0; i<action.books.length; i++) {
-                state.books.push(action.books[i]);
+            for (let i = 0; i < action.books.length; i++) {
+                state.books.push(action.books[i])
             }
             return state
         case 'EDIT_SEARCH_STR':
@@ -39,8 +42,8 @@ const reducer = (state = initialState, action) => {
                 books: []
             }
         default:
-            return state;
+            return state
     }
-};
+}
 
-export default reducer;
+export default reducer
