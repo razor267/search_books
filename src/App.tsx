@@ -1,8 +1,8 @@
-import React from 'react';
-import Books from "./components/Books/Books";
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import React from 'react'
+import Books from './components/Books/Books'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
-const App:React.FC = () => {
+const App: React.FC = () => {
     return (
         <Router>
             <Routes>
@@ -10,7 +10,7 @@ const App:React.FC = () => {
                 <Route path="/" element={<div className="app-wrapper"><Books/></div>}/>
             </Routes>
         </Router>
-    );
+    )
 }
 
-export default App;
+export default App

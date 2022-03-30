@@ -1,14 +1,17 @@
-import React from 'react';
-import BookItem from "../BookItem/BookItem";
-import './Content.css';
+import React from 'react'
+import BookItem from '../BookItem/BookItem'
+import './Content.css'
 
-const Content = (props) => {
+type PropsType = {
+    books: any
+}
+const Content: React.FC<PropsType> = (props) => {
 
-    const {books} = props;
+    const {books} = props
 
     return (
         <div className="wrapperContent">
-            {books && books.map(b => {
+            {books?.map((b: any) => {
                 return (
                     <BookItem
                         key={b.etag}
@@ -22,7 +25,6 @@ const Content = (props) => {
             })}
         </div>
     )
+}
 
-};
-
-export default Content;
+export default Content

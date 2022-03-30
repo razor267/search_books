@@ -1,7 +1,7 @@
-import React from "react";
-import './Spinner.css';
+import React from 'react'
+import './Spinner.css'
 
-export const Spinner = () => {
+export const Spinner: React.FC = () => {
     return (
         <div className="lds-ring">
             <div></div>

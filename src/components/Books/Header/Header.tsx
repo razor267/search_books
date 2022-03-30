@@ -1,12 +1,18 @@
-import React from 'react';
-import './Header.css';
-import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {actions} from "../../../actions/actions";
+import React, {ChangeEvent, KeyboardEvent} from 'react'
+import './Header.css'
+import {Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {actions} from '../../../actions/actions'
 
-const Header = (props) => {
+type PropsType = {
+    searchBooks: (str: string, category: string, sort: string, startIndex: number | null) => void
+    searchStr: string
+    searchCategory: string
+    sort: string
+}
+const Header: React.FC<PropsType> = (props) => {
 
-    const {searchBooks, searchStr, searchCategory, sort} = props;
+    const {searchBooks, searchStr, searchCategory, sort} = props
 
     const dispatch = useDispatch()
 
@@ -16,14 +22,14 @@ const Header = (props) => {
             <div className="search">
                 <span>
                     <input
-                        onChange={(e) => dispatch(actions.editSearchStr(e.currentTarget.value))}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => dispatch(actions.editSearchStr(e.currentTarget.value))}
                         type="text"
                         value={searchStr}
-                        onKeyDown={(e) => e.keyCode === 13 ? searchBooks(searchStr, searchCategory, sort) : null}
+                        onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' ? searchBooks(searchStr, searchCategory, sort, null) : null}
                     />
                 </span>
                 <Link to='/'>
-                    <button onClick={() => searchBooks(searchStr, searchCategory, sort)}>Поиск</button>
+                    <button onClick={() => searchBooks(searchStr, searchCategory, sort, null)}>Поиск</button>
                 </Link>
             </div>
             <div className="category">
@@ -31,7 +37,7 @@ const Header = (props) => {
                 <span className="categoriesSelect">
                     <select
                         name="categories"
-                        onChange={(e) => dispatch(actions.editSearchCategory(e.currentTarget.value))}
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) => dispatch(actions.editSearchCategory(e.currentTarget.value))}
                         value={searchCategory}
                     >
                         <option>all</option>
@@ -48,7 +54,7 @@ const Header = (props) => {
                 <span className="sort">Sorting by</span>
                 <select
                     name="sort"
-                    onChange={(e) => dispatch(actions.editSort(e.currentTarget.value))}
+                    onChange={(e: ChangeEvent<HTMLSelectElement>) => dispatch(actions.editSort(e.currentTarget.value))}
                     value={sort}
                 >
                     <option>relevance</option>
@@ -58,6 +64,6 @@ const Header = (props) => {
         </div>
     )
 
-};
+}
 
-export default Header;
+export default Header

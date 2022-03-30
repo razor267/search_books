@@ -1,36 +1,39 @@
-import React, {useEffect, useState} from "react";
-import './Book.css';
-import {getBook} from "../../../api/Api";
-import {Spinner} from "../../Spinner/Spinner";
+import React, {useEffect, useState} from 'react'
+import './Book.css'
+import {getBook} from '../../../api/Api'
+import {Spinner} from '../../Spinner/Spinner'
 
-const Book = (props) => {
+type PropsType = {
+    id: string
+}
+const Book: React.FC<PropsType> = (props) => {
 
-    const {id} = props;
-    const [book, setBook] = useState();
+    const {id} = props
+    const [book, setBook]: any = useState()
 
     useEffect(() => {
         getBook(id)
             .then(data => {
-                setBook(data);
+                setBook(data)
             })
-    }, [props]);
+    }, [props])
 
-    const returnItemList = (items) => {
-        if(!items) {
-            return "";
+    const returnItemList = (items: any) => {
+        if (!items) {
+            return ''
         }
-        let itemList = "";
+        let itemList = ''
         for (let i = 0; i < items.length; i++) {
             if (i === 0) {
-                itemList = items[i];
+                itemList = items[i]
             } else {
-                itemList = `${itemList}, ${items[i]}`;
+                itemList = `${itemList}, ${items[i]}`
             }
         }
-        return itemList;
+        return itemList
     }
 
-    if(!book) {
+    if (!book) {
         return <Spinner/>
     }
 
@@ -43,10 +46,11 @@ const Book = (props) => {
                 <div className="bookCategory">{book && returnItemList(book.volumeInfo.categories)}</div>
                 <div className="bookTitle">{book && book.volumeInfo.title}</div>
                 <div className="bookAuthors">{book && returnItemList(book.volumeInfo.authors)}</div>
-                <div className="bookDescription" dangerouslySetInnerHTML={book && {__html: book.volumeInfo.description}}></div>
+                <div className="bookDescription"
+                     dangerouslySetInnerHTML={book && {__html: book.volumeInfo.description}}></div>
             </div>
         </div>
     )
 }
 
-export default Book;
+export default Book
