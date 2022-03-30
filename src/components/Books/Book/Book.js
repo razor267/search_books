@@ -21,7 +21,7 @@ const Book = (props) => {
         }
         let itemList = "";
         for (let i = 0; i < items.length; i++) {
-            if (i == 0) {
+            if (i === 0) {
                 itemList = items[i];
             } else {
                 itemList = `${itemList}, ${items[i]}`;

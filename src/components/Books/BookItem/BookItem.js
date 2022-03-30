@@ -9,7 +9,7 @@ const BookItem = (props) => {
     const returnAuthors = (authors) => {
         let authorsList = "";
         for (let i = 0; i < authors.length; i++) {
-            if (i == 0) {
+            if (i === 0) {
                 authorsList = authors[i];
             } else {
                 authorsList = `${authorsList}, ${authors[i]}`;

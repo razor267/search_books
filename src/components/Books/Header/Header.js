@@ -15,7 +15,7 @@ const Header = (props) => {
                         onChange={(e) => editSearchStr(e.currentTarget.value)}
                         type="text"
                         value={searchStr}
-                        onKeyDown={(e) => e.keyCode == 13 ? searchBooks(searchStr, searchCategory, sort) : null}
+                        onKeyDown={(e) => e.keyCode === 13 ? searchBooks(searchStr, searchCategory, sort) : null}
                     />
                 </span>
                 <Link to='/'>
